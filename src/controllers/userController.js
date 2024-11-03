@@ -1,3 +1,4 @@
+// src/controllers/userController.js
 const User = require('../models/User');
 
 exports.createUser = async (req, res) => {
@@ -34,7 +35,7 @@ exports.getUserById = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const [updated] = await User.update(req.body, {
-      where: { id: req.params.id }
+      where: { id: req.params.id },
     });
     if (updated) {
       const updatedUser = await User.findByPk(req.params.id);
@@ -50,7 +51,7 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     const deleted = await User.destroy({
-      where: { id: req.params.id }
+      where: { id: req.params.id },
     });
     if (deleted) {
       res.status(204).json();
